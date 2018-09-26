@@ -1,0 +1,47 @@
+{
+  "name": "desktop-app",
+  "version": "1.0.0",
+  "description": "Open a served Angular web app as a desktop application",
+  "main": "out-tsc/desktop/src/index.js",
+  "scripts": {
+    "start": "yarn clean-compile && electron .",
+    "build": "yarn clean-compile && npx electron-builder build",
+    "lint": "tslint --project .",
+    "clean-compile": "rimraf out-tsc && tsc"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "electron": "3.0.0",
+    "electron-builder": "20.28.4",
+    "npx": "10.2.0",
+    "rimraf": "2.6.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.3"
+  },
+  "build": {
+    "productName": "My Desktop App",
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "icon.png"
+    },
+    "files": [
+      "out-tsc/**/*.js"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "menuCategory": "My Company",
+      "runAfterFinish": false,
+      "perMachine": false,
+      "artifactName": "desktop.${ext}"
+    },
+    "portable": {
+      "artifactName": "desktop-portable.${ext}"
+    }
+  },
+  "dependencies": { }
+}

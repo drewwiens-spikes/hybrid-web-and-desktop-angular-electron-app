@@ -1,0 +1,3 @@
+<h1>My Angular App</h1>
+<p>App is <ng-container *ngIf="!isElectron">not</ng-container> running as an Electron app.</p>
+<button *ngIf="isElectron" (click)="launch()">Click to Launch Calculator</button>
